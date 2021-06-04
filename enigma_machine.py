@@ -45,6 +45,16 @@ class M3EnigmaMachine:
         self.rotors = [enigma_rotor.ROTORS[id] for id in rotorIDs]
         self.plugboard = enigma_plugboard.Plugboard()
 
+    # @classmethod
+    # def create(cls, reflectorID, rotorIDs = []):
+    #     """  """
+    #     em = cls()
+    #     em.reflector = enigma_reflector.REFLECTORS[reflectorID]
+    #     em.rotors = [enigma_rotor.ROTORS[id] for id in rotorIDs]
+    #     em.plugboard = enigma_plugboard.Plugboard()
+
+    #     return em
+
     def set_rotors(self, start_positions, ring_settings=['A','A','A']):
         ''' Also known as the Grundstellung (Ground Setting). Enigma machines 
             need to be in the right startup position in order to work (set-up right to left)'''
