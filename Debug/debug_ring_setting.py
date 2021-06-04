@@ -17,10 +17,6 @@ def GetRandomMachine():
     em.set_plugboard(plugs)
 
     return em
-# rotors = er.random_rotors()
-# start_positions = er.random_start_positions()
-# ring_settings = er.random_ring_settings()
-# plugs = er.random_plugboard()
 
 def GetExactMachine():
     reflector = "UKW-B"
@@ -37,7 +33,6 @@ def GetExactMachine():
 
 em = GetRandomMachine()
 # em = GetExactMachine()
-
 
 print("Enigma Machine State...")
 print(em)

@@ -61,6 +61,7 @@ class M3EnigmaMachine:
         plugs = str.split(plugs)
 
         if len(plugs) == 0:
+            self.plugboard.reset()
             return
 
         for plug in plugs:

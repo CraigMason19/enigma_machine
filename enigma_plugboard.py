@@ -66,13 +66,8 @@ class Plugboard:
 
     def __str__(self):
         ''' Returns a string in the format [(a,b)(c,d)(e,f)...]'''
-        # s = ''.join([f'({key},{value})' for key, value in self.plugs.items()])
-        # return f'[{s}]'
         s = ' '.join([f'{key}{value}' for key, value in self.plugs.items()])
         return f'[{s}]'
-
-
-
 
     def __repr__(self):
         ''' Returns a string in the dictionary format
