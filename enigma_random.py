@@ -3,6 +3,7 @@ sys.path.append('../../Helper')
 
 import random
 import letters
+from enigma_machine import M3EnigmaMachine
 
 def random_reflector():
     return random.choice(["UKW-C", "UKW-B"])
@@ -22,6 +23,19 @@ def random_plugboard():
 
     i = iter(alpha_list[:20]) # Historically 10 pairs of plugs
     return ' '.join(a+b for a,b in zip(i, i))
+
+def CreateRandomMachine():
+    reflector = random_reflector()
+    rotors = random_rotors()
+    positions = random_start_positions()
+    rings = random_ring_settings()
+    plugs = random_plugboard()
+
+    em = M3EnigmaMachine(reflector, rotors)
+    em.set_rotors(positions, rings)
+    em.set_plugboard(plugs)
+
+    return em
 
 def test_random_settings():
     print(f'Reflector: {random_reflector()}')

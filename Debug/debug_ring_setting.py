@@ -4,20 +4,6 @@ sys.path.append('C:/Users/Craig/Google Drive/Programming & Tech/Python/Python Ex
 import enigma_machine
 import enigma_random as er
 
-def GetRandomMachine():
-    reflector = er.random_reflector()
-    rotors = er.random_rotors()
-    # positions = er.random_start_positions()
-    positions = ["A", "A", "A"]
-    rings = er.random_ring_settings()
-    plugs = er.random_plugboard()
-
-    em = enigma_machine.M3EnigmaMachine(reflector, rotors)
-    em.set_rotors(positions, rings)
-    em.set_plugboard(plugs)
-
-    return em
-
 def GetExactMachine():
     reflector = "UKW-B"
     rotors = ["IV", "III", "II"]
@@ -31,7 +17,7 @@ def GetExactMachine():
 
     return em
 
-em = GetRandomMachine()
+em = er.CreateRandomMachine()
 # em = GetExactMachine()
 
 print("Enigma Machine State...")
