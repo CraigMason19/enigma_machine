@@ -2,29 +2,77 @@
 # Name:        enigma_plugboard.py
 #
 # Notes:       The plugboard (Steckerbrett) added an extra layer of combinations
-#              only available to the millitary (not civillian models). Swaps the
-#              input letter with another and then sends it through the rotors.
+#              only available to the millitary (not civillian models). 
 #
 # Links:
 #
 # TODO:
 #-------------------------------------------------------------------------------
 
-# Historically accurate, so it is hard-coded here
+# Historically accurate, so it is a hard-coded global here
 MAX_PLUGS = 10
 
 class Plugboard:
-    ''' A historic plugboard that swaps two letters up to 10 times '''
+    """A historic M3 plugboard that creates a link between two letters. This 
+       swaps the letters before and after going through the rotor translation.
+       Up to 10 connections can be made.
+    
+        Attributes:
+            plugs:
+                A dictionay containing a link between two letters. 
+                E.G. A-C
+            plugs_reversed:
+                A dictionay containing the reversed link between two letters. 
+                E.G. C-A
+
+        Methods:
+            reset():
+                Calls the __init__ method and recreates both lists as empty 
+                lists.
+            add_plug(connection_a, connection_b):
+                Creates a link and reversed link between two letters.
+            remove_plug(connection):
+                Removes a connection from both connection dictionaries.
+            reroute_letter(letter):
+                Returns the coresponding letter of a linked plug connection, or
+                if no connection exists returns the original letter.
+    """
     def __init__(self):
+        """Creates two dictionaries that represent the dual relationship of a 
+           pair of connected plugs
+
+        Args:
+            None.
+
+        Returns:
+            None.
+        """  
         self.plugs = {}
         self.plugs_reversed = {}
 
     def reset(self):
-        ''' Removes all plug connections '''
+        """Removes all plug connections.
+
+        Args:
+            None.
+
+        Returns:
+            None.
+        """  
         self.__init__()
 
     def add_plug(self, connection_a, connection_b):
-        ''' Swaps two letters before or after encryption by the machine '''
+        """Adds a connection between two letters in the plugboard.
+
+        Args:
+            connection_a:
+                The first letter in the connection pair.
+            connection_b:
+                The second letter in the connection pair.
+
+        Returns:
+            None.
+        """  
         if len(self.plugs) >= MAX_PLUGS:
             return  
 
@@ -36,11 +84,20 @@ class Plugboard:
         elif connection_b in self.plugs or connection_b in self.plugs_reversed:
             return
         
+        # Otherwise, put a link to each other in the two dictionaries
         self.plugs[connection_a] = connection_b
         self.plugs_reversed[connection_b] = connection_a
 
     def remove_plug(self, connection):
-        ''' Removes a plug connection and removes it's corresponding link '''
+        """Removes a plug connection and also it's corresponding link.
+
+        Args:
+            connection:
+                One letter in the connection pair we want to remove.
+
+        Returns:
+            A single uppercase letter.
+        """  
         connection = connection.upper()
 
         if connection in self.plugs:
@@ -52,8 +109,17 @@ class Plugboard:
             del self.plugs_reversed[connection]
 
     def reroute_letter(self, letter):
-        ''' Takes a letter and re-routes or swaps letters bassed on the plugs in the 
-            plugboard '''
+        """Takes a letter and re-routes it through the plugs that have been set
+           in the plugboard. If the letter is not effected by the plugboard it 
+           is simply returned.
+
+        Args:
+            letter:
+                The letter wish to translate through the plugboard.
+
+        Returns:
+            A single uppercase letter.
+        """  
         letter = letter.upper()
 
         # Do we send the letter through a connector or just leave it alone?
@@ -65,11 +131,13 @@ class Plugboard:
             return letter
 
     def __str__(self):
-        ''' Returns a string in the format [(a,b)(c,d)(e,f)...]'''
+        """Returns a string in the format [ab cd ef...]
+        """
         s = ' '.join([f'{key}{value}' for key, value in self.plugs.items()])
         return f'[{s}]'
 
     def __repr__(self):
-        ''' Returns a string in the dictionary format
-            E.g. {'A': 'B', 'C': 'D', 'E': 'F'} '''
+        """Returns a string in the dictionary format 
+           E.g. {'A': 'B', 'C': 'D', 'E': 'F'} 
+        """    
         return f'{self.plugs}'  
