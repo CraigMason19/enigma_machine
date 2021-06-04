@@ -1,0 +1,31 @@
+# Links
+http://en.wikipedia.org/wiki/Enigma_rotor_details
+http://practicalcryptography.com/ciphers/enigma-cipher
+http://www.codesandciphers.org.uk/enigma/example1.htm
+# http://enigma.louisedade.co.uk/enigma.html
+
+# Online machine
+https://cryptii.com/pipes/enigma-machine
+
+http://people.physik.hu-berlin.de/~palloks/js/enigma/enigma-u_v25_en.html
+
+# Detailed walkthrough
+https://www.codesandciphers.org.uk/enigma/example1.htm
+
+# Turing's Enigma Problem (Part 1) - Computerphile
+https://www.youtube.com/watch?v=d2NWPG2gB_A&list=WL&index=7&t=0s
+
+# 158,962,555,217,826,360,000 combinations
+https://www.youtube.com/watch?v=G2_Q9FoD-oQ
+
+# The flaw in the Enigma machine (Letters cannot become themselves)
+https://www.youtube.com/watch?v=V4V2bpZlqx8&list=WL&index=4&t=0s
+
+Cracking Enigma in 2021
+https://www.youtube.com/watch?v=RzWB5jL5RX0&list=PLKau8nTsbJo0_vrCZtezhwNjQ9v5BlZOO&index=5
+
+# Pringles can example
+https://www.youtube.com/watch?v=pZsuxZXN33g&list=WL&index=4&t=37s
+
+# Ring settings examples 
+https://pastebin.com/DVip1ypK
