@@ -19,7 +19,7 @@ class Plugboard:
     
         Attributes:
             plugs:
-                A dictionay containing a link between two letters. 
+                A dictionary containing a link between two letters. 
                 E.G. A-C
             plugs_reversed:
                 A dictionay containing the reversed link between two letters. 
@@ -28,18 +28,18 @@ class Plugboard:
         Methods:
             reset():
                 Calls the __init__ method and recreates both lists as empty 
-                lists.
+                dictionaries.
             add_plug(connection_a, connection_b):
                 Creates a link and reversed link between two letters.
             remove_plug(connection):
                 Removes a connection from both connection dictionaries.
             reroute_letter(letter):
-                Returns the coresponding letter of a linked plug connection, or
+                Returns the coresponding linked letter of a plug connection, or
                 if no connection exists returns the original letter.
     """
     def __init__(self):
         """Creates two dictionaries that represent the dual relationship of a 
-           pair of connected plugs
+           pair of connected letters
 
         Args:
             None.
@@ -93,7 +93,7 @@ class Plugboard:
 
         Args:
             connection:
-                One letter in the connection pair we want to remove.
+                One letter of the connection pair we want to remove.
 
         Returns:
             A single uppercase letter.
@@ -115,7 +115,7 @@ class Plugboard:
 
         Args:
             letter:
-                The letter wish to translate through the plugboard.
+                The letter we wish to translate through the plugboard.
 
         Returns:
             A single uppercase letter.

@@ -11,61 +11,77 @@
 
 import re
 from textwrap import wrap
-
 from enigma_machine import M3EnigmaMachine
-import enigma_random as er
 
 def clean_message(message):
-    ''' Cleans a message of non alphabetic characters and returns the result '''
+    """Cleans a message of non-alphabetic characters and returns the result.
+
+    Args:
+        message:
+            A string of text to clean.
+
+    Returns:
+        A string containing the cleaned up text.
+    """  
     regex = re.compile('[^a-zA-Z]')
     return regex.sub('', message)
 
 def format_message(message, grouping=5):
-    ''' Formats a message by spliting it into blocks for easier reading '''
+    """Formats a message by spliting it into blocks for easier reading of
+       encrypted text.
+
+    Args:
+        message:
+            The message to be split into blocks.
+        grouping:
+            The block size of the split up text.
+
+    Returns:
+        A string containing the original text but grouped into blocks.
+    """  
     return ' '.join(wrap(message, grouping))
-    
-# Let's setup the machine! 
-def create_machine():
-    ''' Insert the reflector and rotor combinations, align the wheels and setup
-        the plugboard '''
-    em = M3EnigmaMachine("UKW-B", ["I", "II", "III"])
-    em.set_rotor_positions(["A", "A", "A"])
-    em.set_plugboard('bq cr di ej kw mt os px uz gh')
+
+def create_craig_machine():
+    """Let's set up the machine!!! It's been a lot of work, but I finally did it!
+
+    Args:
+        None.
+
+    Returns:
+        A M3EnigmaMachine set-up with fun settings for my 34th birthday :).
+    """  
+    em = M3EnigmaMachine("UKW-B", ["III", "IV", "V"]) # Pythagorean triple
+    em.set_rotors(["C", "J", "M"], ["I", "F", "U"]) # (9, 6, 21)
+    em.set_plugboard('CR AI GM AS ON') 
     
     return em
 
-def create_random_machine():
-    ''' Setup random settings for the entire machine (reflector, rotors, ring 
-        settings and plugboard) '''
-    rem = M3EnigmaMachine(er.random_reflector(), er.random_rotors())
-    rem.set_rotor_positions(er.random_start_positions(), er.random_ring_settings())
-    rem.set_plugboard(er.random_plugboard())
-    
-    return rem
-
 def main():
-    # em = create_machine()
-    em = create_random_machine()
+    em = create_craig_machine()
 
-    print("Enigma Machine State...")
-    print(em)
-    print(em.rotors)
-    print(em.reflector)
-    print(em.plugboard)
-    print()
+    print('Start Enigma Machine State...')
+    print(f'\t{em}')
 
-    message_text = ('ggggggggggggggggggggggggggggggggggggggggggggggggg'
-                    'ggggggggggggggggggggggggggggggggggggggggggggggggg'
-                    '123nkihklglglg lg lgu lg 1')
+    print('Reflector:')
+    print(f'\t{em.reflector}')
+
+    print("Rotors:")
+    for rotor in em.rotors:
+        print(f'\t{rotor!r}')
+
+    print("Plugboard:")
+    print(f'\t{em.plugboard}\n')
+
+    message_text = ('Happy thirty-fourth Birthday Craig!!!')
     clean_text = clean_message(message_text)
     encrypted_text = em.encode_message(clean_text)
 
-    print(f'Original: {message_text}')
-    print(f'Clean: {format_message(clean_text)}')
-    print(f'Encrypted: {format_message(encrypted_text)}\n')
+    print(f'Original Text: {message_text}')
+    print(f'Clean Text: {format_message(clean_text)}')
+    print(f'Encrypted Text: {format_message(encrypted_text)}\n')
 
-    print("Enigma Machine State...")
-    print(em)
+    print("Final Enigma Machine State...")
+    print(f'\t{em}')
     
 if __name__ == '__main__':
     main()

@@ -24,7 +24,7 @@ def random_plugboard():
     i = iter(alpha_list[:20]) # Historically 10 pairs of plugs
     return ' '.join(a+b for a,b in zip(i, i))
 
-def CreateRandomMachine():
+def create_random_machine():
     reflector = random_reflector()
     rotors = random_rotors()
     positions = random_start_positions()

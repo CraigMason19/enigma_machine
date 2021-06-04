@@ -17,7 +17,7 @@ def GetExactMachine():
 
     return em
 
-em = er.CreateRandomMachine()
+em = er.create_random_machine()
 # em = GetExactMachine()
 
 print("Enigma Machine State...")
