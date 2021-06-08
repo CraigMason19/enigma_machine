@@ -26,6 +26,9 @@ class Plugboard:
                 E.G. C-A
 
         Methods:
+            __init__():
+                Creates two dictionaries that represent the dual relationship of a 
+                pair of connected letters
             reset():
                 Calls the __init__ method and recreates both lists as empty 
                 dictionaries.
