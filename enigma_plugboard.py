@@ -140,7 +140,7 @@ class Plugboard:
             None.
 
         Returns:
-            None.
+            A string.
         """  
         s = ' '.join([f'{key}{value}' for key, value in self.plugs.items()])
         return f'[{s}]'
@@ -153,6 +153,6 @@ class Plugboard:
             None.
 
         Returns:
-            None.
+            A string.
         """   
         return f'{self.plugs}'  
