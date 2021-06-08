@@ -112,5 +112,21 @@ class TestLetters(unittest.TestCase):
 
         self.assertEqual(result, expected)
 
+    def test_double_step_03(self):
+        reflector = "UKW-B"
+        rotors = ["III", "II", "I"]
+        positions = ["A", "D", "N"]
+
+        em = enigma_machine.M3EnigmaMachine(reflector, rotors)
+        em.set_rotors(positions)
+        
+        expected, result = ['ADO', 'ADP', 'ADQ', 'AER', 'BFS', 'BFT', 'BFU'], []
+        for _ in range(len(expected)):
+            # Doesn't matter what is encoded, we are checking the rotor steps
+            em.encode_letter('x') 
+            result.append(''.join([rotor.current_letter for rotor in em.rotors]))
+
+        self.assertEqual(result, expected)
+
 if __name__ == '__main__':
     unittest.main()
