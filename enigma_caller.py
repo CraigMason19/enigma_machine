@@ -85,3 +85,28 @@ def main():
     
 if __name__ == '__main__':
     main()
+
+
+
+
+
+
+
+
+# Start Enigma Machine State...
+#         [UKW-B, III:C:I, IV:J:F, V:M:U]
+# Reflector:
+#         [UKW-B, YRUHQSLDPXNGOKMIEBFZCWVJATI]
+# Rotors:
+#         [III, SUCAYWJLNPRTKXZBFDHVGMQEOI, notch=V, letter=C, ring=I]
+#         [IV, UEOFDVZNWMCQSKYLPIHRBGJXTA, notch=J, letter=J, ring=F]
+#         [V, GDKIZYWEPTVLACNSOJMXHBFRUQ, notch=Z, letter=M, ring=U]
+# Plugboard:
+#         [CR AI GM ON]
+
+# Original Text: Happy thirty-fourth Birthday Craig!!!
+# Clean Text: Happy thirt yfour thBir thday Craig
+# Encrypted Text: VHJMV QPZYP QYUDS YZYYY FRKED UBLBN
+
+# Final Enigma Machine State...
+#         [UKW-B, III:D:I, IV:L:F, V:Q:U]
