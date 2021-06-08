@@ -1,16 +1,12 @@
-# Links
-http://en.wikipedia.org/wiki/Enigma_rotor_details
-http://practicalcryptography.com/ciphers/enigma-cipher
+# Helpful Links
+
+# Basic explanations
 http://www.codesandciphers.org.uk/enigma/example1.htm
-# http://enigma.louisedade.co.uk/enigma.html
+http://en.wikipedia.org/wiki/Enigma_rotor_details
 
-# Online machine
+# Online machines
 https://cryptii.com/pipes/enigma-machine
-
 http://people.physik.hu-berlin.de/~palloks/js/enigma/enigma-u_v25_en.html
-
-# Detailed walkthrough
-https://www.codesandciphers.org.uk/enigma/example1.htm
 
 # Turing's Enigma Problem (Part 1) - Computerphile
 https://www.youtube.com/watch?v=d2NWPG2gB_A&list=WL&index=7&t=0s
