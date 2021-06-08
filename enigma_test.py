@@ -74,7 +74,7 @@ class TestLetters(unittest.TestCase):
         
         expected, result = ['AAU', 'AAV', 'ABW', 'ABX'], []
         for _ in range(len(expected)):
-            # Doesn't mastter what is encoded, we are checking the rotor steps
+            # Doesn't matter what is encoded, we are checking the rotor steps
             em.encode_letter('x') 
             result.append(''.join([rotor.current_letter for rotor in em.rotors]))
 
@@ -90,7 +90,23 @@ class TestLetters(unittest.TestCase):
         
         expected, result = ['ADU', 'ADV', 'AEW', 'BFX', 'BFY'], []
         for _ in range(len(expected)):
-            # Doesn't mastter what is encoded, we are checking the rotor steps
+            # Doesn't matter what is encoded, we are checking the rotor steps
+            em.encode_letter('x') 
+            result.append(''.join([rotor.current_letter for rotor in em.rotors]))
+
+        self.assertEqual(result, expected)
+
+    def test_double_step_02(self):
+        reflector = "UKW-B"
+        rotors = ["III", "II", "I"]
+        positions = ["K", "D", "N"]
+
+        em = enigma_machine.M3EnigmaMachine(reflector, rotors)
+        em.set_rotors(positions)
+        
+        expected, result = ['KDO', 'KDP', 'KDQ', 'KER', 'LFS', 'LFT', 'LFU'], []
+        for _ in range(len(expected)):
+            # Doesn't matter what is encoded, we are checking the rotor steps
             em.encode_letter('x') 
             result.append(''.join([rotor.current_letter for rotor in em.rotors]))
 

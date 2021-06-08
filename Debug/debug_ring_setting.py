@@ -5,11 +5,11 @@ import enigma_machine
 import enigma_random as er
 
 def GetExactMachine():
-    reflector = "UKW-B"
-    rotors = ["I", "II", "III"]
-    positions = ["A", "A", "A"]
-    rings = ["A", "A", "A"]
-    plugs = ""
+    reflector = "UKW-C"
+    rotors = ["IV", "I", "V"]
+    positions = ["G", "H", "X"]
+    rings = ["L", "Y", "B"]
+    plugs = "tk vf ag du bq jh ow sc nr py"
 
     em = enigma_machine.M3EnigmaMachine(reflector, rotors)
     em.set_rotors(positions, rings)
@@ -18,8 +18,8 @@ def GetExactMachine():
     return em
 
 # TODO - BUG??? MACHINE ROTORS ARE DIFFERENT
-em = er.create_random_machine()
-# em = GetExactMachine()
+# em = er.create_random_machine()
+em = GetExactMachine()
 
 print("Enigma Machine State...")
 print(em)
@@ -27,5 +27,5 @@ print(em.rotors)
 print(em.plugboard)
 print()
 
-x = em.encode_message('aaaaa')
+x = em.encode_message('randomtext')
 print(x)
