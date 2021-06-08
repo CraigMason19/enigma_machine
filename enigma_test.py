@@ -64,8 +64,53 @@ class TestLetters(unittest.TestCase):
         result, expected = em.encode_message('hElLo'), 'ZZOTE'
         self.assertEqual(result, expected)
 
-    def test_03(self):
-        pass
+    def test_single_step_01(self):
+        reflector = "UKW-B"
+        rotors = ["I", "II", "III"]
+        positions = ["A", "A", "T"]
+
+        em = enigma_machine.M3EnigmaMachine(reflector, rotors)
+        em.set_rotors(positions)
+        
+        expected, result = ['AAU', 'AAV', 'ABW', 'ABX'], []
+        for _ in range(len(expected)):
+            # Doesn't matter what is encoded, we are checking the rotor steps
+            em.encode_letter('x') 
+            result.append(''.join([rotor.current_letter for rotor in em.rotors]))
+
+        self.assertEqual(result, expected)
+
+    def test_double_step_01(self):
+        reflector = "UKW-B"
+        rotors = ["I", "II", "III"]
+        positions = ["A", "D", "T"]
+
+        em = enigma_machine.M3EnigmaMachine(reflector, rotors)
+        em.set_rotors(positions)
+        
+        expected, result = ['ADU', 'ADV', 'AEW', 'BFX', 'BFY'], []
+        for _ in range(len(expected)):
+            # Doesn't matter what is encoded, we are checking the rotor steps
+            em.encode_letter('x') 
+            result.append(''.join([rotor.current_letter for rotor in em.rotors]))
+
+        self.assertEqual(result, expected)
+
+    def test_double_step_02(self):
+        reflector = "UKW-B"
+        rotors = ["III", "II", "I"]
+        positions = ["K", "D", "N"]
+
+        em = enigma_machine.M3EnigmaMachine(reflector, rotors)
+        em.set_rotors(positions)
+        
+        expected, result = ['KDO', 'KDP', 'KDQ', 'KER', 'LFS', 'LFT', 'LFU'], []
+        for _ in range(len(expected)):
+            # Doesn't matter what is encoded, we are checking the rotor steps
+            em.encode_letter('x') 
+            result.append(''.join([rotor.current_letter for rotor in em.rotors]))
+
+        self.assertEqual(result, expected)
 
 if __name__ == '__main__':
     unittest.main()

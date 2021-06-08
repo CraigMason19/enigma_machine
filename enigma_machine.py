@@ -85,9 +85,15 @@ class M3EnigmaMachine:
             the reflector 
             
             Notch turns rotor after encrypting '''
+
+        # The right-most or 'fast' wheel will always turn
         self.rotors[2].rotate()
-        if self.rotors[2].is_in_post_notch_position():
+        
+        # If the fast rotor turns and the middle rotor is in the notch position 
+        # then it will 'double step'
+        if self.rotors[2].is_in_post_notch_position() or self.rotors[1].is_in_notch_position():
             self.rotors[1].rotate()
+            # Normal turn of the middle wheel
             if self.rotors[1].is_in_post_notch_position():
                  self.rotors[0].rotate()
 

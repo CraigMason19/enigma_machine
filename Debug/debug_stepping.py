@@ -33,6 +33,6 @@ def double_step_sequence():
         print(f'\t{em}')
         em.encode_letter('X')
 
-
+# a change in text for source tree purposes
 normal_sequence()
 double_step_sequence()
