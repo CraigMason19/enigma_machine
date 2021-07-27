@@ -6,10 +6,10 @@ import enigma_random as er
 
 def GetExactMachine():
     reflector = "UKW-C"
-    rotors = ["IV", "I", "V"]
-    positions = ["G", "H", "X"]
-    rings = ["L", "Y", "B"]
-    plugs = "tk vf ag du bq jh ow sc nr py"
+    rotors = ["IV", "V", "I"]
+    positions = ["A", "B", "C"]
+    rings = ["Z", "Y", "X"]
+    plugs = "Ab Cd Ef Gh Ij Kl Mn Op Qr St"
 
     em = enigma_machine.M3EnigmaMachine(reflector, rotors)
     em.set_rotors(positions, rings)
@@ -27,5 +27,5 @@ print(em.rotors)
 print(em.plugboard)
 print()
 
-x = em.encode_message('randomtext')
+x = em.encode_message('zzote')
 print(x)
