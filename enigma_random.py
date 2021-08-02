@@ -73,7 +73,7 @@ def random_plugboard():
     alpha_list = list(letters.ALPHABET_UPPER)
     random.shuffle(alpha_list)
 
-    i = iter(alpha_list[:20]) # Historically 10 pairs of plugs
+    i = iter(alpha_list[:20]) # Historically 10 pairs of plugs were used
     return ' '.join(a+b for a,b in zip(i, i))
 
 def create_random_machine():

@@ -37,8 +37,8 @@ class Reflector:
                 E.G. [UKW-B, YRUHQSLDPXNGOKMIEBFZCWVJATI]
     """
     def __init__(self, id, writing):
-        """Creates two dictionaries that represent the dual relationship of a 
-        pair of connected letters
+        """Creates a reflector containing an id and reflection wiring. The 
+           reflector is to the left of all the rotors and doesn't ever move.
 
         Args:
             id:
@@ -77,7 +77,7 @@ class Reflector:
             None.
 
         Returns:
-            None.
+            A string.
         """  
         return "[%s, %s]" % (self.id, self.writing)
 

@@ -13,27 +13,6 @@ import enigma_machine
 
 class TestLetters(unittest.TestCase):
     #---------------------------------------------------------------------------
-    # setUpClass and tearDownClass run before and after all tests, called once
-    # NOTE - the camelCase syntax. Important that they are named this way.
-    #---------------------------------------------------------------------------
-    @classmethod
-    def setUpClass(cls):
-        pass
-
-    @classmethod
-    def tearDownClass(cls):
-        pass
-
-    #---------------------------------------------------------------------------
-    # setUp and tearDown run before every single test.
-    #---------------------------------------------------------------------------
-    def setUp(self):
-        pass
-
-    def tearDown(self):
-        pass
-
-    #---------------------------------------------------------------------------
     # Tests
     #---------------------------------------------------------------------------
     def test_00(self):
