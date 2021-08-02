@@ -28,6 +28,7 @@
 
 import sys
 from collections import namedtuple
+from copy import deepcopy
 
 sys.path.append('../../Helper')
 import letters
@@ -87,7 +88,7 @@ class M3EnigmaMachine:
             None.
         """  
         self.reflector = enigma_reflector.REFLECTORS[reflector_id]
-        self.rotors = [enigma_rotor.ROTORS[id] for id in rotor_ids]
+        self.rotors = [deepcopy(enigma_rotor.ROTORS[id]) for id in rotor_ids]
         self.plugboard = enigma_plugboard.Plugboard()
 
     def set_rotors(self, start_positions, ring_settings=['A','A','A']):

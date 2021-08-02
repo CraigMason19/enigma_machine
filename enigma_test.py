@@ -11,8 +11,6 @@
 import unittest
 import enigma_machine
 
-unittest.TestLoader.sortTestMethodsUsing = None
-
 class TestLetters(unittest.TestCase):
     #---------------------------------------------------------------------------
     # setUpClass and tearDownClass run before and after all tests, called once
@@ -53,11 +51,6 @@ class TestLetters(unittest.TestCase):
         result, expected = em.encode_message('bdzgo'), 'AAAAA'
         self.assertEqual(result, expected)
 
-
-
-
-
-    # TODO Bug???
     def test_encrypt(self):
         em2 = enigma_machine.M3EnigmaMachine("UKW-C", ["IV", "V", "I"])
         em2.set_rotors(["A", "B", "C"], ["Z", "Y", "X"])
@@ -71,19 +64,8 @@ class TestLetters(unittest.TestCase):
         em.set_rotors(["A", "B", "C"], ["Z", "Y", "X"])
         em.set_plugboard("Ab Cd Ef Gh Ij Kl Mn Op Qr St")
         
-        result, expected = em.encode_message('hElLo'), 'ZZOTE'
+        result, expected = em.encode_message('zzOTe'), 'HELLO'
         self.assertEqual(result, expected)
-
-
-
-
-
-
-
-
-
-
-
 
     def test_single_step_01(self):
         reflector = "UKW-B"
