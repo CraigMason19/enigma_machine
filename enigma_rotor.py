@@ -5,7 +5,7 @@
 #              wiring and could be swapped out to allow various configurations.
 #              The right most rotor would increment after each key press. If a
 #              special notch letter was triggererd it would rotate the rotor to 
-#              it's left
+#              it's left.
 #
 # Links:
 #
@@ -22,7 +22,7 @@ import letters
 RedirectedPosition = namedtuple("RedirectedPosition", "letter index")
 
 class Rotor:
-    """Represents a rotor of the machine. ROTORS had a fixed internal wiring and
+    """ Represents a rotor of the machine. ROTORS had a fixed internal wiring and
         could be swapped out to allow various configurations. The right most rotor
         would increment after each key press. If a special notch letter was 
         triggererd it would rotate the rotor to it's left.
@@ -32,13 +32,13 @@ class Rotor:
                 A string representing the name of a reflector. 
                 E.G. UKW-B
             notch:
-                A string representing the internal wiring. 
+                A character representing the notch or 'turnover' position. 
             writing:
-                pass
+                A string representing the internal wiring.
             current_letter:
-                pass
+                A character representing the rotor's current position.
             alphabet:
-                pass
+                A string
 
         Methods:
             __init__(id, writing, notch):
@@ -106,15 +106,21 @@ class Rotor:
         """   
         return (self.current_letter == letters.shift_letter_up(self.notch, 1))
 
-
-
-
-
-
-
-
     def configure(self, letter, ring_setting='A'):
-        # Rotate until we are in the desired letter position 
+        """ Sets up the rotor by turning it to the correct position, also sets the 
+            rotor's ring setting if provided, sets it to the 'A' position if not. In the
+            'A' position it has no effect on the machine.
+
+        Args:
+            letter:
+                The letter that the rotor is set to in the machine. 
+            ring_setting:
+                (Also known as the Ringstellung). A letter showing the ring setting to be 
+                used.
+
+        Returns:
+            None.
+        """   
         while self.current_letter != letter:
             self.rotate()
 
@@ -125,32 +131,20 @@ class Rotor:
         if ring_setting == "a" or ring_setting == "A":
             return
         else:
-            # self.dot_position = letters.next_letter(self.dot_position) # TODO do I need the dot position
-            
-
-
             # Shift all the letters in the wiring up based upon the ring setting's index
             shift_factor = letters.letter_to_index(self.ring_setting)
             shifted_alphabet = letters.shift_alphabet(shift_factor, True)
             shifted_writing = ''.join([letters.shift_letter_up(c, shift_factor) for c in self.writing])
 
-            
             # create tuple of the new writing, take the second
             tmp = sorted([(shifted_alphabet[x], shifted_writing[x]) for x in range(26)])
 
+            #
             self.writing = ''.join([letter[1] for letter in tmp]) 
 
-
-
-
-
-
-
-
-
     def rotate(self):
-        """Turn the rotor once. A rotor is a circular disc and so will always 
-           be able to turn.
+        """ Turn the rotor once. A rotor is a circular disc and so will always 
+            be able to turn.
 
         Args:
             None. 

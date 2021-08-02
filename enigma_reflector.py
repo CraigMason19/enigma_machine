@@ -15,16 +15,16 @@ from collections import namedtuple
 ReflectedPosition = namedtuple("ReflectedPosition", "letter index")
 
 class Reflector:
-    """Represents a reflector wheel (to the left of the rotors) which doesn't 
-       rotate, which reverses the signal and sends it back through the rotors
-       again.
+    """ Represents a reflector wheel (to the left of the rotors) which doesn't 
+        rotate, which reverses the signal and sends it back through the rotors
+        again.
     
         Attributes:
             id:
-                A string representing the name of a reflector. 
-                E.G. UKW-B
+               A string representing the name of a reflector. 
+               E.G. UKW-B
             writting:
-                A string representing the internal wiring. 
+               A string representing the internal wiring. 
 
         Methods:
             __init__(self, id, writing):
