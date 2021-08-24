@@ -15,7 +15,7 @@ class TestLetters(unittest.TestCase):
     #---------------------------------------------------------------------------
     # Tests
     #---------------------------------------------------------------------------
-    def test_00(self):
+    def test_encrypt_01(self):
         em = enigma_machine.M3EnigmaMachine("UKW-B", ["I", "II", "III"])
         em.set_rotors(["A", "A", "A"])
         em.set_plugboard("")
@@ -23,14 +23,14 @@ class TestLetters(unittest.TestCase):
         result, expected = em.encode_message('aaaaa'), 'BDZGO'
         self.assertEqual(result, expected)
 
-    def test_01(self):        
+    def test_decrypt_01(self):        
         em = enigma_machine.M3EnigmaMachine("UKW-B", ["I", "II", "III"])
         em.set_rotors(["A", "A", "A"])
 
         result, expected = em.encode_message('bdzgo'), 'AAAAA'
         self.assertEqual(result, expected)
 
-    def test_encrypt(self):
+    def test_encrypt_02(self):
         em2 = enigma_machine.M3EnigmaMachine("UKW-C", ["IV", "V", "I"])
         em2.set_rotors(["A", "B", "C"], ["Z", "Y", "X"])
         em2.set_plugboard("Ab Cd Ef Gh Ij Kl Mn Op Qr St")
@@ -38,7 +38,7 @@ class TestLetters(unittest.TestCase):
         result, expected = em2.encode_message('hElLo'), 'ZZOTE'
         self.assertEqual(result, expected)
 
-    def test_decrypt(self):
+    def test_decrypt_02(self):
         em = enigma_machine.M3EnigmaMachine("UKW-C", ["IV", "V", "I"])
         em.set_rotors(["A", "B", "C"], ["Z", "Y", "X"])
         em.set_plugboard("Ab Cd Ef Gh Ij Kl Mn Op Qr St")

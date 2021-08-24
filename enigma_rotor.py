@@ -1,11 +1,11 @@
 #-------------------------------------------------------------------------------
 # Name:        enigma_rotor.py
 #
-# Notes:       Represents a rotor of the machine. Rotors had a fixed internal 
-#              wiring and could be swapped out to allow various configurations.
-#              The right most rotor would increment after each key press. If a
-#              special notch letter was triggererd it would rotate the rotor to 
-#              it's left.
+# Notes:       Represents a single rotor of the machine. Rotors had a fixed 
+#              internal wiring and could be swapped out to allow various
+#              configurations. The right most rotor would increment after each
+#              key press. If a special notch letter was triggererd it would 
+#              rotate the rotor to it's left.
 #
 # Links:
 #
@@ -17,63 +17,61 @@ sys.path.append('../../Helper')
 
 from collections import namedtuple
 import string
+
 import letters
 
 RedirectedPosition = namedtuple("RedirectedPosition", "letter index")
 
 class Rotor:
-    """ Represents a rotor of the machine. ROTORS had a fixed internal wiring and
-        could be swapped out to allow various configurations. The right most rotor
-        would increment after each key press. If a special notch letter was 
-        triggererd it would rotate the rotor to it's left.
+    """Represents a rotor of the machine. If a special notch letter was triggererd 
+       it would rotate the rotor to it's left.
     
-        Attributes:
-            id:
-                A string representing the name of a reflector. 
-                E.G. UKW-B
-            notch:
-                A character representing the notch or 'turnover' position. 
-            writing:
-                A string representing the internal wiring.
-            current_letter:
-                A character representing the rotor's current position.
-            alphabet:
-                A string
+    Attributes:
+        id:
+            A string representing the name of a rotor in roman numerals. 
+            E.G. IV
+        notch:
+            A letter representing the notch or 'turnover' position. 
+        writing:
+            A string representing the internal wiring.
+        current_letter:
+            A letter representing the rotor's current position.
+        alphabet:
+            A string.
 
-        Methods:
-            __init__(id, writing, notch):
-                Constructs the rotor.
-            redirect():
-                Takes the letter being encrypted from the left-most wheel and 
-                looks up it's corresponding connection.
-            is_in_notch_position():
-                Determines if the rotor has reached it's notch position.
-            is_in_post_notch_position():
-                Determines if the rotor has just passed it's notch position.
-            configure(letter, ring_setting='A'):
-                Sets up a rotor by turning it to the correct position, also sets the 
-                rotor's ring setting if provided, sets it to the 'A' position if not.
-            rotate():
-                Rotates the rotor wheel ONE position.
-            redirect(input_index, reverse=False):
-                Passes a letter left or right through the rotor.
-            __str__():
-                Returns a upper case string containing the current rotors wiring position.
-                E.G. SUCAYWJLNPRTKXZBFDHVGMQEOI
-            __repr__():
-                Returns a string in the format [id, writting, notch=X, letter=X, ring=X]
-                E.G. [III, SUCAYWJLNPRTKXZBFDHVGMQEOI, notch=V, letter=C, ring=I]
+    Methods:
+        __init__(id, writing, notch):
+            Constructs the rotor.
+        is_in_notch_position():
+            Determines if the rotor has reached it's notch position.
+        is_in_post_notch_position():
+            Determines if the rotor has just passed it's notch position.
+        configure(letter, ring_setting='A'):
+            Sets up a rotor by turning it to the correct position, also sets the 
+            rotor's ring setting if provided, sets it to the 'A' position if not.
+        rotate():
+            Rotates the rotor wheel ONE position.
+        redirect(input_index, reverse=False):
+            Passes a letter left or right through the rotor based on the reversed flag.
+        __str__():
+            Returns a upper case string containing the current rotors wiring position.
+            E.G. SUCAYWJLNPRTKXZBFDHVGMQEOI
+        __repr__():
+            Returns a string in the format [id, writing, notch=X, letter=X, ring=X].
+            E.G. [III, SUCAYWJLNPRTKXZBFDHVGMQEOI, notch=V, letter=C, ring=I]
     """
     def __init__(self, id, writing, notch):
-        """Creates two dictionaries that represent the dual relationship of a 
-        pair of connected letters
+        """Creates a rotor that can be placed anywhere in the machine.
 
         Args:
             id:
-                A string representing the name of a reflector. 
-                E.G. UKW-B
-            writting:
+                A string representing the name of a rotor in roman numerals up to 5. 
+                E.G. IV
+            writing:
                 A string representing the internal wiring. 
+            notch:
+                A letter representing when the rotor is in position to turn the rotor
+                to it's left.
 
         Returns:
             None.
@@ -107,9 +105,9 @@ class Rotor:
         return (self.current_letter == letters.shift_letter_up(self.notch, 1))
 
     def configure(self, letter, ring_setting='A'):
-        """ Sets up the rotor by turning it to the correct position, also sets the 
-            rotor's ring setting if provided, sets it to the 'A' position if not. In the
-            'A' position it has no effect on the machine.
+        """Sets up the rotor by turning it to the correct position, also sets the 
+           rotor's ring setting if provided, sets it to the 'A' position if not. In the
+           'A' position it has no effect on the machine.
 
         Args:
             letter:
@@ -136,15 +134,15 @@ class Rotor:
             shifted_alphabet = letters.shift_alphabet(shift_factor, True)
             shifted_writing = ''.join([letters.shift_letter_up(c, shift_factor) for c in self.writing])
 
-            # create tuple of the new writing, take the second
+            # Create a list of tuples pairing up the shifted alphabet and writing. Then sort
+            # alphabetically.
             tmp = sorted([(shifted_alphabet[x], shifted_writing[x]) for x in range(26)])
-
-            #
+            # Finally, alter the state of the internal wiring
             self.writing = ''.join([letter[1] for letter in tmp]) 
 
     def rotate(self):
-        """ Turn the rotor once. A rotor is a circular disc and so will always 
-            be able to turn.
+        """Turn the rotor once. A rotor is a circular disc and so will always 
+           be able to turn.
 
         Args:
             None. 
@@ -192,7 +190,7 @@ class Rotor:
         return "%s" % (self.writing)
 
     def __repr__(self):
-        """Returns a string in the format [id, writting, notch=X, letter=X, ring=X]
+        """Returns a string in the format [id, writing, notch=X, letter=X, ring=X]
            E.G. [III, SUCAYWJLNPRTKXZBFDHVGMQEOI, notch=V, letter=C, ring=I]
 
         Args:

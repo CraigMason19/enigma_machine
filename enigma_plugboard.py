@@ -17,32 +17,32 @@ class Plugboard:
        swaps the letters before and after going through the rotor translation.
        Up to 10 connections can be made.
     
-        Attributes:
-            plugs:
-                A dictionary containing a link between two letters. 
-                E.G. A-C
-            plugs_reversed:
-                A dictionay containing the reversed link between two letters. 
-                E.G. C-A
+    Attributes:
+        plugs:
+            A dictionary containing a link between two letters. 
+            E.G. A-C
+        plugs_reversed:
+            A dictionay containing the reversed link between two letters. 
+            E.G. C-A
 
-        Methods:
-            __init__():
-                Creates two dictionaries that represent the dual relationship of a 
-                pair of connected letters
-            reset():
-                Calls the __init__ method and recreates both lists as empty 
-                dictionaries.
-            add_plug(connection_a, connection_b):
-                Creates a link and reversed link between two letters.
-            remove_plug(connection):
-                Removes a connection from both connection dictionaries.
-            reroute_letter(letter):
-                Returns the coresponding linked letter of a plug connection, or
-                if no connection exists returns the original letter.
+    Methods:
+        __init__():
+            Creates two dictionaries that represent the dual relationship of a 
+            pair of connected letters
+        reset():
+            Calls the __init__ method and recreates both lists as empty 
+            dictionaries.
+        add_plug(connection_a, connection_b):
+            Creates a link and reversed link between two letters.
+        remove_plug(connection):
+            Removes a connection from both connection dictionaries.
+        reroute_letter(letter):
+            Returns the coresponding linked letter of a plug connection, or
+            if no connection exists returns the original letter.
     """
     def __init__(self):
         """Creates two dictionaries that represent the dual relationship of a 
-           pair of connected letters
+           pair of connected letters.
 
         Args:
             None.
@@ -50,8 +50,7 @@ class Plugboard:
         Returns:
             None.
         """  
-        self.plugs = {}
-        self.plugs_reversed = {}
+        self.plugs, self.plugs_reversed = {}, {}
 
     def reset(self):
         """Removes all plug connections.
@@ -134,7 +133,7 @@ class Plugboard:
             return letter
 
     def __str__(self):
-        """Returns a string in the format [ab cd ef...]
+        """Returns a string in the format [ab cd ef...].
 
         Args:
             None.
@@ -146,7 +145,7 @@ class Plugboard:
         return f'[{s}]'
 
     def __repr__(self):
-        """Returns a string in the dictionary format 
+        """Returns a string in the dictionary format.
            E.g. {'A': 'B', 'C': 'D', 'E': 'F'} 
 
         Args:

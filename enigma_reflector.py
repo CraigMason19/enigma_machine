@@ -15,26 +15,26 @@ from collections import namedtuple
 ReflectedPosition = namedtuple("ReflectedPosition", "letter index")
 
 class Reflector:
-    """ Represents a reflector wheel (to the left of the rotors) which doesn't 
-        rotate, which reverses the signal and sends it back through the rotors
-        again.
+    """Represents a reflector wheel (to the left of the rotors) which doesn't 
+       rotate, and reverses the signal and sends it back through the rotors
+       again.
     
-        Attributes:
-            id:
-               A string representing the name of a reflector. 
-               E.G. UKW-B
-            writting:
-               A string representing the internal wiring. 
+    Attributes:
+        id:
+            A string representing the name of a reflector. 
+            E.G. UKW-B
+        writing:
+            A string representing the internal wiring. 
 
-        Methods:
-            __init__(self, id, writing):
-                Takes two strings to construct the reflector
-            reflect():
-                Takes the letter being encrypted from the left-most wheel and 
-                looks up it's corresponding connection.
-            __repr__():
-                Returns a string in the format ['name', 'writting']
-                E.G. [UKW-B, YRUHQSLDPXNGOKMIEBFZCWVJATI]
+    Methods:
+        __init__(self, id, writing):
+            Takes two strings to construct the reflector
+        reflect():
+            Takes the letter being encrypted from the left-most wheel and 
+            looks up it's corresponding connection.
+        __repr__():
+            Returns a string in the format ['name', 'writing']
+            E.G. [UKW-B, YRUHQSLDPXNGOKMIEBFZCWVJATI]
     """
     def __init__(self, id, writing):
         """Creates a reflector containing an id and reflection wiring. The 
@@ -44,7 +44,7 @@ class Reflector:
             id:
                 A string representing the name of a reflector. 
                 E.G. UKW-B
-            writting:
+            writing:
                 A string representing the internal wiring. 
 
         Returns:
@@ -70,7 +70,7 @@ class Reflector:
         return ReflectedPosition(reflected_letter, reflected_index)
 
     def __repr__(self):
-        """Returns a string in the format ['name', 'writting']
+        """Returns a string in the format ['name', 'writing'].
            E.G. [UKW-B, YRUHQSLDPXNGOKMIEBFZCWVJATI]
 
         Args:

@@ -3,10 +3,6 @@
 #
 # Notes:       A M3 Enigma machine implementation to encrypt / decrypt messages
 #
-#              I'd like to offer special mention to Mr. Elllis (hero) & my
-#              Grandfather's 1948 Hamburg story he told me after taking me to
-#              my first opera. Ariadne auf Naxos, Op. 60, by Richard Strauss
-#
 #              "Wehrmacht" was the unified armed forces of Germany from 1935 to
 #              1945. It consisted of the Heer (army), the Kriegsmarine (navy)
 #              and the Luftwaffe (air force).
@@ -27,10 +23,11 @@
 #-------------------------------------------------------------------------------
 
 import sys
+sys.path.append('../../Helper')
+
 from collections import namedtuple
 from copy import deepcopy
 
-sys.path.append('../../Helper')
 import letters
 
 import enigma_reflector
@@ -42,35 +39,35 @@ Position = namedtuple("Position", "letter index")
 class M3EnigmaMachine:
     """Represents a M3 1940 era Enigma machine to encrypt/decrypt messages. 
 
-        Attributes:
-            reflector:
-                A single Reflector class found in enigma_reflector.py
-            rotors:
-                A list of 3 Rotor classes found in enigma_rotors.py. 
-            plugboard:
-                A single Plugboard class found in enigma_plugboard.py.
+    Attributes:
+        reflector:
+            A single Reflector class found in enigma_reflector.py
+        rotors:
+            A list of 3 Rotor classes found in enigma_rotors.py. 
+        plugboard:
+            A single Plugboard class found in enigma_plugboard.py.
 
-        Methods:
-            __init__(reflectorID, rotorIDs):
-                Creates a new machine configuration, reflector and rotors don't 
-                change once encryption begins.
-            set_rotors(start_positions, ring_settings=['A','A','A']):
-                Sets up the rotors configuration. If the ring settings are not set 
-                they have no effect on the machine.
-            set_plugboard(plugs):
-                Sets up a plugboard with a minimum of 0 and a maximum of 10 plugs.
-            advance_state():
-                Everytime a new letter is pressed, adjust the machine's rotor
-                positions.
-            encode_letter(letter, print_path=False):
-                Only advance the machine once, can opt to show the letters path 
-                if wanted.
-            encode_message(message):
-                Encrypts and returns a whole string.
-            __repr__():
-                Returns a string containg the machines relector, rotor id's, 
-                position and ring states. Will NOT print the plugboard.
-                [UKW-C, IV:G:L, I:H:Y, V:X:B]
+    Methods:
+        __init__(reflectorID, rotorIDs):
+            Creates a new machine configuration, reflector and rotors don't 
+            change once encryption begins.
+        set_rotors(start_positions, ring_settings=['A','A','A']):
+            Sets up the rotors configuration. If the ring settings are not set 
+            they have no effect on the machine.
+        set_plugboard(plugs):
+            Sets up a plugboard with a minimum of 0 and a maximum of 10 plugs.
+        advance_state():
+            Everytime a new letter is pressed, adjust the machine's rotor
+            positions.
+        encode_letter(letter, print_path=False):
+            Only advance the machine once, can opt to show the letters path 
+            if wanted.
+        encode_message(message):
+            Encrypts and returns a whole string.
+        __repr__():
+            Returns a string containg the machines relector, rotor id's, 
+            position and ring states. Will NOT print the plugboard.
+            [UKW-C, IV:G:L, I:H:Y, V:X:B]
     """
     def __init__(self, reflector_id, rotor_ids):
         """Creates a machine based just upon the reflector and rotors passed in. 
@@ -140,7 +137,7 @@ class M3EnigmaMachine:
            wheel doesn't rotate the reflector as the reflector is fixed. 
 
         Args:
-            None:
+            None.
 
         Returns:
             None.
@@ -175,7 +172,8 @@ class M3EnigmaMachine:
                     right, middle, left rotors ->
                         reflector ->
                             left, middle, right rotors
-                                -> plugboard.
+                                plugboard ->
+                                    encrypted_letter
         """ 
         self.advance_state()
 
@@ -243,4 +241,5 @@ class M3EnigmaMachine:
         return "[%s, %s:%s:%s, %s:%s:%s, %s:%s:%s %s]" % (self.reflector.id,
             self.rotors[0].id, self.rotors[0].current_letter, self.rotors[0].ring_setting,
             self.rotors[1].id, self.rotors[1].current_letter, self.rotors[1].ring_setting,
-            self.rotors[2].id, self.rotors[2].current_letter, self.rotors[2].ring_setting, self.plugboard)
+            self.rotors[2].id, self.rotors[2].current_letter, self.rotors[2].ring_setting, 
+            self.plugboard)
