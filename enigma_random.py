@@ -8,9 +8,6 @@
 # TODO:
 #-------------------------------------------------------------------------------
 
-import sys
-sys.path.append('../../Helper')
-
 import random
 import letters
 from enigma_machine import M3EnigmaMachine

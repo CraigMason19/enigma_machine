@@ -1,26 +1,7 @@
 {
-	"folders": [
-		{
-			"path": "."
-		},
-		// {
-		// 	"path": "Debug"
-		// }
-	],
-	"settings": {
-		"python.pythonPath": "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\Python37_64\\python.exe",
-		"python.linting.pylintArgs": ["--init-hook",
-			"import sys; sys.path.append('C:/Users/Craig/Google Drive/Programming & Tech/Python/Helper');",
-			// "import sys; sys.path.append('C:/Users/Craig/Google Drive/Programming & Tech/Python/Python Experiments/Enigma Machine');",
-		],
-	}
+    "folders": [
+        {
+            "path": "."
+        }
+    ]
 }
-
-// sys.path.append \
-// ("C:\\Program Files\\DIgSILENT\\...");("C:\\Programs\\eclipse...")
-
-
-// "python.linting.pylintArgs": [
-// 	"--init-hook",
-// 	"import sys; sys.path.insert(0, 'c:/Development/PythonCode/TestExt/hello')"
-// // ]

@@ -22,9 +22,6 @@
 # TODO:
 #-------------------------------------------------------------------------------
 
-import sys
-sys.path.append('../../Helper')
-
 from collections import namedtuple
 from copy import deepcopy
 
