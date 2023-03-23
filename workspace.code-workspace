@@ -1,7 +1,25 @@
 {
-    "folders": [
+	"folders": [
+		{
+			"path": "."
+		},
         {
-            "path": "."
-        }
-    ]
+            "path": "./Source"
+        },
+	],
+
+	"settings": {
+		//"python.defaultInterpreterPath": "${workspaceFolder}/.env/Scripts/python.exe",
+		"terminal.integrated.env.windows": 
+		{
+			"PYTHONPATH": ".;./Source;"
+		},
+							
+
+		"python.autoComplete.extraPaths": [
+			"./Source",
+		],
+
+		"python.linting.pylintArgs": ["--init-hook"]
+	},
 }
