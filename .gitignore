@@ -6,3 +6,4 @@ Extras/
 workspace (OLD).code-workspace
 txt_links.txt
 Final print-out.pdf
+__pycache__/
