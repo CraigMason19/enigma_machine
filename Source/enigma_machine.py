@@ -12,10 +12,6 @@
 #              from. Later versions of the navys machine used more rotors
 #              (4 rotors, from a selection of 8, and also featured double
 #              notches).
-#
-#              Even though this device caused a lot of pain, it has an complexity,
-#              simplicity and fascination that is wonderful. It's not the machines
-#              fault what humanity decides to do with it.
 #  
 # Links:       See the accompanying text file
 #
