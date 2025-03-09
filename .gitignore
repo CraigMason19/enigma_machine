@@ -7,3 +7,5 @@ workspace (OLD).code-workspace
 txt_links.txt
 Final print-out.pdf
 __pycache__/
+directory_tree_lister.py
+directory_tree_lister_output.txt
