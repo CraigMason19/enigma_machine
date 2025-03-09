@@ -16,9 +16,8 @@ import sys
 sys.path.append('../../Helper')
 
 from collections import namedtuple
-import string
 
-import letters
+from enigma import letters
 
 RedirectedPosition = namedtuple("RedirectedPosition", "letter index")
 

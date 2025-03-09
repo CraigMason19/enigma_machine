@@ -21,11 +21,11 @@
 from collections import namedtuple
 from copy import deepcopy
 
-import letters
+from enigma import letters
 
-import enigma_reflector
-import enigma_rotor
-import enigma_plugboard
+from enigma import enigma_reflector
+from enigma import enigma_rotor
+from enigma import enigma_plugboard
 
 Position = namedtuple("Position", "letter index")
 
@@ -64,7 +64,7 @@ class M3EnigmaMachine:
     """
     def __init__(self, reflector_id, rotor_ids):
         """Creates a machine based just upon the reflector and rotors passed in. 
-           The rotors will need to be set in the set_rotors method. Also creates
+           Rotors will be set by default to the 'A' position Also creates
            an empty plugboard.
 
         Args:
@@ -80,6 +80,8 @@ class M3EnigmaMachine:
         self.reflector = enigma_reflector.REFLECTORS[reflector_id]
         self.rotors = [deepcopy(enigma_rotor.ROTORS[id]) for id in rotor_ids]
         self.plugboard = enigma_plugboard.Plugboard()
+
+        self.set_rotors(['A','A','A'])
 
     def set_rotors(self, start_positions, ring_settings=['A','A','A']):
         """Rotate the wheels to the correct letter position. Also set's up the ring

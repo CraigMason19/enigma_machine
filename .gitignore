@@ -1,11 +1,10 @@
-Old workspace - Link to another path.txt
-txt_inspiration.txt
+__pycache__/
+
 Debug/
+_Debug/
 Enigma Help Docs/
 Extras/
-workspace (OLD).code-workspace
-txt_links.txt
-Final print-out.pdf
-__pycache__/
+_Extras/
+
 directory_tree_lister.py
 directory_tree_lister_output.txt

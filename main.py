@@ -1,5 +1,5 @@
 #-------------------------------------------------------------------------------
-# Name:        enigma_caller.py
+# Name:        main.py
 #
 # Notes:       Caller to scramble or unscramble messages from a WW2 M3 Enigma
 #              machine.
@@ -11,7 +11,7 @@
 
 import re
 from textwrap import wrap
-from enigma_machine import M3EnigmaMachine
+from enigma.enigma_machine import M3EnigmaMachine
 
 def clean_message(message):
     """Cleans a message of non-alphabetic characters and returns the result.
