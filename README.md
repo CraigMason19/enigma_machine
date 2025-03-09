@@ -8,7 +8,7 @@ Created just for fun.
 ## Requirements
 None.
 
-## Usages
+## Usage
 
 ### Creation
 
@@ -28,7 +28,7 @@ You can create a plugboard with up to 10 connections. This will swap the letters
 em.set_plugboard('AB CD EF GH IJ') 
 ```
 
-#### Usage
+### Encoding
 
 Two methods are provided for encoding, you can encode individual letters or entire messages. 
 
@@ -38,13 +38,11 @@ em.encode_message(message)
 ```
 
 Using the same machine settings, encoding a message will produce the encoded version, and encoding the encoded message again will revert it to the original.
+
 ```Python
 em1 = M3EnigmaMachine("UKW-B", ["III", "IV", "V"])
 em2 = M3EnigmaMachine("UKW-B", ["III", "IV", "V"])
 
-m1 = em1.encode_message("HELLO")
-m2 = em2.encode_message("AJKUH")
-
-print(m1) # AJKUH
-print(m2) # HELLO
+m1 = em1.encode_message("HELLO") # AJKUH
+m2 = em2.encode_message("AJKUH") # HELLO
 ```
