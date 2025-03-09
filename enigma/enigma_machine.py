@@ -49,7 +49,7 @@ class M3EnigmaMachine:
             they have no effect on the machine.
         set_plugboard(plugs):
             Sets up a plugboard with a minimum of 0 and a maximum of 10 plugs.
-        advance_state():
+        _advance_state():
             Everytime a new letter is pressed, adjust the machine's rotor
             positions.
         encode_letter(letter, print_path=False):
@@ -125,7 +125,7 @@ class M3EnigmaMachine:
             if len(plug) == 2: # Has to be a paired connection
                 self.plugboard.add_plug(plug[0], plug[1])
 
-    def advance_state(self):
+    def _advance_state(self):
         """After a letter has been input to the machine change the machine by
            rotating the wheel on the right. This then potentially affects the
            rotor to it's left based upon it's notch and so on. The left most 
@@ -170,7 +170,7 @@ class M3EnigmaMachine:
                                 plugboard ->
                                     encrypted_letter
         """ 
-        self.advance_state()
+        self._advance_state()
 
         # Convert to uppercase just to be safe  
         path = [letter.upper()] 
