@@ -11,6 +11,7 @@
 
 import re
 from textwrap import wrap
+
 from enigma.enigma_machine import M3EnigmaMachine
 
 def clean_message(message):
