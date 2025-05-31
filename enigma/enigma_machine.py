@@ -150,7 +150,9 @@ class M3EnigmaMachine:
 
     def encode_letter(self, letter, print_path=False):
         """Trace the path for a single letter. The rotors are advanced before 
-           each letter is encripted. E.g. if you start the with the rotors set
+           each letter is encripted. Non-letter characters are returned unmodified.
+           
+           E.g. if you start the with the rotors set
            at AAZ then when the first letter of the message is encrypted the          
            rightmost rotor will have already rotated into the A position. 
 
@@ -172,6 +174,10 @@ class M3EnigmaMachine:
         """ 
         self._advance_state()
 
+        # Return the charcter if not in the alphabet
+        if letter not in letters.ALPHABET_LOWER + letters.ALPHABET_UPPER:
+            return letter
+        
         # Convert to uppercase just to be safe  
         path = [letter.upper()] 
 
