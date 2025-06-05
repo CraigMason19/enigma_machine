@@ -14,6 +14,8 @@ None.
 
 The Enigma machine supports two reflectors ("UKW-B" & "UKW-C"). You can create a machine using any three rotors selected from a pool of five ("I", "II", "III", "IV", "V"). The machine is initialized with a reflector and three rotors.
 ```Python
+from enigma import M3EnigmaMachine
+
 em = M3EnigmaMachine("UKW-B", ["III", "IV", "V"])
 ```
 
